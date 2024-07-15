@@ -5,6 +5,7 @@ import { client } from "@/sanity/client"
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import ProjectCard from "@/components/ProjectCard";
 import { RevalidationTag } from "@/sanity/utils";
+import BlogCard from "@/components/BlogCard";
 
 export default async function Home() {
   const homePageData = await client.fetch<HomePageQueryType>(homePageQuery, {}, {next: { tags: [RevalidationTag.project, RevalidationTag.about, RevalidationTag.experience, RevalidationTag.partnership] }});
@@ -82,6 +83,10 @@ export default async function Home() {
             })
           }
         </div>
+      </section>
+      {/* Featured Blog Section */}
+      <section className="pt-8 px-8 tablet:px-0 tablet:pt-12">
+        <BlogCard key={homePageData.featuredBlog._id} blog={homePageData.featuredBlog}/>
       </section>
     </main>
   );

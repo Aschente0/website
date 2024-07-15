@@ -1,4 +1,5 @@
 import { MarkdownContent } from "../shared/types";
+import { BlogSummary } from "./blogs";
 import { ProjectSummary } from "./projects";
 
 export const homePageQuery = `{
@@ -27,7 +28,16 @@ export const homePageQuery = `{
     name,
     "fullLogo": fullLogo.asset->url,
     _updatedAt
-  } | order(_updatedAt desc)
+  } | order(_updatedAt desc),
+  "featuredBlog": *[_type == 'blog'] {
+    _id,
+    "slug": slug.current,
+    date,
+    title,
+    "logo": logo.asset->url,
+    "heroImage": heroImage.asset->url,
+    themeColour,
+  } | order(date desc)[0],
 }`
 export type HomePageQueryType = {
   featuredProject: ProjectSummary;
@@ -44,5 +54,6 @@ export type HomePageQueryType = {
   partnershipSection: {
     name: string;
     fullLogo: string;
-  }[]
+  }[],
+  featuredBlog: BlogSummary;
 }
