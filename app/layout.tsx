@@ -7,8 +7,9 @@ import Footer from "@/components/Footer";
 const laila = Laila({ subsets: ["latin"], display: "swap", weight: ["300", "400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "Carlos Lam",
-  description: "Portfolio for Carlos Lam",
+  title: "Karl's Corner",
+  description: "Explore my digital playground featuring a collection of my past projects, adventures, and musings!",
+  icons: "/favicon.ico"
 };
 
 export default function RootLayout({
