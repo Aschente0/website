@@ -1,4 +1,4 @@
-import Hero, { HERO_ELEMENT_HEIGHTS } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { client } from "@/sanity/client";
 import { ProjectsQuery, projectsQuery } from "@/sanity/queries/projects";
 import ClientLayer from "./clientLayer"

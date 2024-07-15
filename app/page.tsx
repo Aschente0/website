@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Hero, { HERO_ELEMENT_HEIGHTS } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { homePageQuery, HomePageQueryType } from "@/sanity/queries/homepage"
 import { client } from "@/sanity/client"
 import MarkdownRenderer from "@/components/MarkdownRenderer";
