@@ -4,6 +4,7 @@ import ClientButton from "@/components/Buttons/ClientButton";
 import ProjectCard from "@/components/ProjectCard";
 import { client } from "@/sanity/client";
 import { ProjectsQuery, ProjectSummary, projectsQuery } from "@/sanity/queries/projects";
+import { RevalidationTag } from "@/sanity/utils";
 import { useState } from "react";
 
 export default function Projects({ children, itemsPerPage }: { children?: React.ReactNode, itemsPerPage: number }) {
@@ -18,6 +19,10 @@ export default function Projects({ children, itemsPerPage }: { children?: React.
       const fetchProjects = await client.fetch<ProjectsQuery>(projectsQuery, {
         start: pagination.nextPage*itemsPerPage,
         end: pagination.nextPage*itemsPerPage + itemsPerPage
+      }, {
+        next: {
+          tags: [RevalidationTag.project]
+        }
       })
       // references to new data to update projects state with
       const newProjects = fetchProjects.projects

@@ -5,10 +5,15 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { BackButton } from "./clientComponents";
 import { projectQuery, Project } from "@/sanity/queries/projects";
 import ElevatedLogoWrapper from "@/components/ElevatedLogoWrapper";
+import { RevalidationTag } from "@/sanity/utils";
 
 export default async function ProjectPage({ params }: { params: { project: string } }) {
   const projectData = await client.fetch<Project>(projectQuery, {
     slug: params.project
+  }, {
+    next: {
+      tags: [RevalidationTag.project]
+    }
   });
   const {r, g, b} = projectData.themeColour.rgb
   return (

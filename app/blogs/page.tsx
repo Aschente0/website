@@ -3,6 +3,7 @@ import { client } from "@/sanity/client";
 import ClientLayer from "./clientLayer"
 import { BlogsQuery, blogsQuery } from "@/sanity/queries/blogs";
 import BlogCard from "@/components/BlogCard";
+import { RevalidationTag } from "@/sanity/utils";
 
 const ITEMS_PER_PAGE = 3
 
@@ -10,6 +11,10 @@ export default async function Projects() {
   const fetchBlogs = await client.fetch<BlogsQuery>(blogsQuery, {
     start: 0,
     end: 0 + ITEMS_PER_PAGE
+  }, {
+    next: {
+      tags: [RevalidationTag.blog]
+    }
   });
   return (
     <div className="">

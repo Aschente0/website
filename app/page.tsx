@@ -4,9 +4,10 @@ import { homePageQuery, HomePageQueryType } from "@/sanity/queries/homepage"
 import { client } from "@/sanity/client"
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import ProjectCard from "@/components/ProjectCard";
+import { RevalidationTag } from "@/sanity/utils";
 
 export default async function Home() {
-  const homePageData = await client.fetch<HomePageQueryType>(homePageQuery);
+  const homePageData = await client.fetch<HomePageQueryType>(homePageQuery, {}, {next: { tags: [RevalidationTag.project, RevalidationTag.about, RevalidationTag.experience, RevalidationTag.partnership] }});
   return (
     <main className="">
       {/* Hero Section */}

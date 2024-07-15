@@ -1,5 +1,6 @@
 import { client } from "@/sanity/client";
 import { Experience, ExperienceAndPartnershipsQuery, Partnership, experienceAndPartnershipsQuery } from "@/sanity/queries/experience";
+import { RevalidationTag } from "@/sanity/utils";
 import Image from "next/image";
 
 const ExperienceBreakdown = ({e}: {e: Experience}) => {
@@ -88,7 +89,9 @@ const PartnershipComponent = ({p}: {p: Partnership}) => {
 }
 
 export default async function Projects() {
-  const {experience, partnerships} = await client.fetch<ExperienceAndPartnershipsQuery>(experienceAndPartnershipsQuery);
+  const {experience, partnerships} = await client.fetch<ExperienceAndPartnershipsQuery>(experienceAndPartnershipsQuery,
+    {},
+    { next: { tags: [RevalidationTag.experience, RevalidationTag.partnership] }});
   return (
     <main className="min-h-[85vh] m-8 tablet:m-0">
       <h1 className="text-h4 font-bold">Experience</h1>

@@ -4,10 +4,15 @@ import { client } from "@/sanity/client"
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Blog, blogQuery } from "@/sanity/queries/blogs";
 import { BackButton } from "./clientComponents";
+import { RevalidationTag } from "@/sanity/utils";
 
 export default async function BlogPage({ params }: { params: { blog: string } }) {
   const blogData = await client.fetch<Blog>(blogQuery, {
     slug: params.blog
+  }, {
+    next: {
+      tags: [RevalidationTag.blog]
+    }
   });
   return (
     <main className="min-h-[100rem] bg-gray-300">

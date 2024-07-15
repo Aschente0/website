@@ -1,9 +1,17 @@
 import { client } from "@/sanity/client";
 import { GlobalDataQuery, globalDataQuery } from "@/sanity/queries/global";
+import { RevalidationTag } from "@/sanity/utils";
 import Link from "next/link";
 
 export default async function Footer() {
-  const globalData = await client.fetch<GlobalDataQuery>(globalDataQuery);
+  const globalData = await client.fetch<GlobalDataQuery>(globalDataQuery,
+    {},
+    {
+      next: {
+        tags: [RevalidationTag.global]
+      }
+    }
+  );
   return (
     <div className="bg-gray-900 flex text-white text-lg p-[4rem] relative gap-[8rem]">
       <div className="flex flex-col gap-4">

@@ -3,6 +3,7 @@ import { client } from "@/sanity/client";
 import { ProjectsQuery, projectsQuery } from "@/sanity/queries/projects";
 import ClientLayer from "./clientLayer"
 import ProjectCard from "@/components/ProjectCard";
+import { RevalidationTag } from "@/sanity/utils";
 
 const ITEMS_PER_PAGE = 3
 
@@ -10,6 +11,10 @@ export default async function Projects() {
   const fetchProjects = await client.fetch<ProjectsQuery>(projectsQuery, {
     start: 0,
     end: 0 + ITEMS_PER_PAGE
+  }, {
+    next: {
+      tags: [RevalidationTag.project]
+    }
   });
 
   return (

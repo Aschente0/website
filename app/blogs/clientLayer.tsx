@@ -6,6 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { client } from "@/sanity/client";
 import { BlogSummary, BlogsQuery, blogsQuery } from "@/sanity/queries/blogs";
 import { ProjectsQuery, ProjectSummary, projectsQuery } from "@/sanity/queries/projects";
+import { RevalidationTag } from "@/sanity/utils";
 import { useState } from "react";
 
 export default function Projects({ children, itemsPerPage }: { children?: React.ReactNode, itemsPerPage: number }) {
@@ -20,6 +21,10 @@ export default function Projects({ children, itemsPerPage }: { children?: React.
       const fetchBlogs = await client.fetch<BlogsQuery>(blogsQuery, {
         start: pagination.nextPage*itemsPerPage,
         end: pagination.nextPage*itemsPerPage + itemsPerPage
+      }, {
+        next: {
+          tags: [RevalidationTag.blog]
+        }
       })
       // references to new data to update projects state with
       const newBlogs = fetchBlogs.blogs
