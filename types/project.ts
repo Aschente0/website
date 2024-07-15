@@ -1,1 +1,0 @@
-import { SanityImage, ThemeColour } from "@/sanity/shared/types";
