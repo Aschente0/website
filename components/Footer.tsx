@@ -16,8 +16,8 @@ export default async function Footer() {
     <div className="bg-gray-900 flex text-white text-lg p-[4rem] relative gap-[8rem]">
       <div className="flex flex-col gap-4">
         <Link className="cursor-pointer" href="/">Home</Link>
+        <Link className="cursor-pointer" href="/about">About</Link>
         <Link className="cursor-pointer" href="/projects">Projects</Link>
-        <Link className="cursor-pointer" href="/experience">Experience & Partnerships</Link>
         <Link className="cursor-pointer" href="/blogs">Blog</Link>
       </div>
       <div className="flex flex-col gap-4">
