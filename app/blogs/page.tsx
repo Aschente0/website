@@ -16,7 +16,7 @@ export default async function Projects() {
       <Hero>
         <BlogCard blog={fetchBlogs.blogs[0]}/>
       </Hero>
-      <div className={`pt-[${HERO_ELEMENT_HEIGHTS.mobile}] tablet:pt-[${HERO_ELEMENT_HEIGHTS.desktop}]`}>
+      <div className={`pt-[65vh] tablet:pt-[85vh]`}>
         <div className="flex flex-col gap-8 tablet:gap-16 p-8 tablet:p-0">
           {fetchBlogs.blogs.slice(1).map(blog => {
             return (

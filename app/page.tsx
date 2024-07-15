@@ -16,7 +16,7 @@ export default async function Home() {
         </Hero>
       </section>
       {/* About Section */}
-      <section className={`pt-[${HERO_ELEMENT_HEIGHTS.mobile}] tablet:pt-[${HERO_ELEMENT_HEIGHTS.desktop}]`}> {/* padding to render below hero section */}
+      <section className={`pt-[65vh] tablet:pt-[85vh]`}> {/* padding to render below hero section */}
         <div className="bg-gray-300 relative grid grid-flow-row tablet:grid-flow-col grid-cols-2 grid-rows-2 tablet:grid-rows-none tablet:grid-cols-7 gap-8 p-8 m-8 tablet:p-10 tablet:m-0">
           <div className="col-span-1 tablet:col-span-2 relative -ml-8 -mb-8 tablet:-ml-10 tablet:-mb-10 -mr-[12rem] min-[600px]:-mr-[2rem] min-[640px]:-mr-[8rem] min-[768px]:-mr-[6rem]">
             <Image
