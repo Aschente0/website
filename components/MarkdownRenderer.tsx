@@ -74,20 +74,20 @@ const components: Partial<PortableTextReactComponents | object> = {
     },
   },
   types: {
-    halfWidthImages: ({ value }) => {
+    halfWidthImage: ({ value }) => {
       return (
        <div className="my-12">
-         <div className="relative w-[50%] mx-auto">
+         <div className="relative w-[50%] tablet:w-[30%] mx-auto">
            <Image src={sanityImageUrlBuilder(value.image)} alt={value.imageCaption} width={900} height={900}/>
          </div>
-         {value.imageCaption && <p className="mx-8 my-4">{value.imageCaption}</p>}
+         {value.imageCaption && <p className="mx-8 my-4 text-center">{value.imageCaption}</p>}
        </div>
      )
    },
     fullWidthImage: ({ value }) => {
        return (
         <div className="my-12">
-          <div className="relative w-full ">
+          <div className="relative w-full">
             <Image src={sanityImageUrlBuilder(value.image)} alt={value.imageCaption} width={1600} height={900}/>
           </div>
           {value.imageCaption && <p className="mx-8 my-4">{value.imageCaption}</p>}
