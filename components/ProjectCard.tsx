@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: {project: ProjectSummary }) {
 
           </div>
           <p className="text-h4 phone:text-h3 font-bold mt-8">{project.title}</p>
-          <p className="text-xl font-light mt-8">{project.subtitle}</p>
+          <p className="text-h6 font-light mt-8">{project.subtitle}</p>
           <div className="mt-14">
             <Link href={`/projects/${project.slug}`} className="z-10">
               <Button colour={project.textColour.hex}>
