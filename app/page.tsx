@@ -36,7 +36,7 @@ export default async function Home() {
             </div>
 
           </div>
-          <div className="col-span-1 tablet:col-span-2 z-10 flex flex-col justify-center items-center text-justify tablet:items-start mt-12 ml-4 tablet:-ml-1">
+          <div className="col-span-1 tablet:col-span-2 z-10 flex flex-col justify-center items-center text-justify tablet:items-start mt-12 ml-12 tablet:-ml-12">
             <p className="text-h3 font-bold ">{homePageData.aboutSection.name}</p>
             <p className="text-h6">{homePageData.aboutSection.title}</p>
           </div>
