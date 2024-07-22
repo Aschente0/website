@@ -1,6 +1,7 @@
 import { client } from "@/sanity/client";
 import { Experience, ExperienceAndPartnershipsQuery, Partnership, experienceAndPartnershipsQuery } from "@/sanity/queries/experience";
 import { RevalidationTag } from "@/sanity/utils";
+import { formatDateString } from "@/utils/date";
 import Image from "next/image";
 
 const ExperienceBreakdown = ({e}: {e: Experience}) => {
@@ -30,7 +31,7 @@ const ExperienceBreakdown = ({e}: {e: Experience}) => {
             </div>
             <div className="col-span-5 tablet:col-span-6">
               <p className="text-h6 font-bold">{p.title}</p>
-              <p className="text-md">Since {p.startDate}</p>
+              <p className="text-md">Since {formatDateString(p.startDate)}</p>
             </div>
           </div>
         )
@@ -57,7 +58,7 @@ const ExperienceComponent = ({e}: {e: Experience}) => {
         <div className="col-span-5 tablet:col-span-6">
           <p className="text-h5 font-bold">{e.name}</p>
           <p className="text-lg">{e.title}</p>
-          <p className="text-md">Since {e.startDate}</p>
+          <p className="text-md">Since {formatDateString(e.startDate)}</p>
         </div>
       </div>
       <ExperienceBreakdown e={e} />

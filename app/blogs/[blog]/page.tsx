@@ -5,6 +5,7 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Blog, blogQuery } from "@/sanity/queries/blogs";
 import { BackButton } from "./clientComponents";
 import { RevalidationTag } from "@/sanity/utils";
+import { formatDateString } from "@/utils/date";
 
 export default async function BlogPage({ params }: { params: { blog: string } }) {
   const blogData = await client.fetch<Blog>(blogQuery, {
@@ -37,7 +38,7 @@ export default async function BlogPage({ params }: { params: { blog: string } })
                   </div>
                 </div>
                 <h1 className="text-h4 text-center">{blogData.title}</h1>
-                <div className="w-full text-center text-lg mt-8">{blogData.date}</div>
+                <div className="w-full text-center text-lg mt-8">{formatDateString(blogData.date)}</div>
               </div>
             </div>
             <Image
