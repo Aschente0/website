@@ -1,13 +1,22 @@
 "use client"
 
+import { useState } from "react"
+
 export default function Button({ children, colour, onClick }: { children: React.ReactNode, colour: string, onClick: Function }) {
+  const [disabled, setDisabled] = useState(false)
+  const onClickWrapper = async () => {
+    setDisabled(true)
+    await onClick()
+    setDisabled(false)
+  }
   return (
-    <div
+    <button
       style={{ backgroundColor: colour }}
       className={`inline-block rounded-full px-16 py-4 cursor-pointer`}
-      onClick={() => onClick()}
+      onClick={() => onClickWrapper()}
+      disabled={disabled}
     >
       {children}
-    </div>
+    </button>
   )
 }
