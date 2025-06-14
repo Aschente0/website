@@ -44,8 +44,8 @@ const ExperienceComponent = ({ e }: { e: Experience }) => {
   return (
     <div>
       <div className="bg-gray-300 p-10 grid grid-flow-col grid-cols-7 gap-16 mt-8 tablet:mt-16">
-        <div className="relative col-span-2 tablet:col-span-1">
-          {e.condensedLogo && <Image
+        {e.condensedLogo && <div className="relative col-span-2 tablet:col-span-1">
+          <Image
             src={e.condensedLogo}
             alt={e.name}
             fill={true}
@@ -53,8 +53,8 @@ const ExperienceComponent = ({ e }: { e: Experience }) => {
               objectFit: "contain"
             }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />}
-        </div>
+          />
+        </div>}
         <div className="col-span-5 tablet:col-span-6">
           <p className="text-h5 font-bold">{e.name}</p>
           <p className="text-lg">{e.title}</p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ProjectSummary } from "@/sanity/queries/projects";
 import ElevatedLogoWrapper from "./ElevatedLogoWrapper";
 
-export default function ProjectCard({ project }: {project: ProjectSummary }) {
+export default function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <div className="h-[100%] relative">
       <Image
@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: {project: ProjectSummary }) {
       />
       <div className="w-[80%] tablet:w-[50%] h-[100%] px-16 py-24 z-10 flex flex-col justify-end relative">
         <div className="absolute w-full h-full top-0 left-0 opacity-95 z-0"
-          style={{ 
+          style={{
             backgroundColor: project.themeColour.hex,
           }}
         ></div>
@@ -29,6 +29,8 @@ export default function ProjectCard({ project }: {project: ProjectSummary }) {
             color: project.textColour.hex,
           }}
         >
+          <h1 className="absolute top-8 left-8 text-h4 font-bold" style={{ color: project.textColour.hex }}>Latest Project:</h1>
+
           <div className="h-[4rem] max-w-[15rem]">
             <ElevatedLogoWrapper>
               <Image
