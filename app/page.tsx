@@ -8,13 +8,13 @@ import { RevalidationTag } from "@/sanity/utils";
 import BlogCard from "@/components/BlogCard";
 
 export default async function Home() {
-  const homePageData = await client.fetch<HomePageQueryType>(homePageQuery, {}, {next: { tags: [RevalidationTag.project, RevalidationTag.about, RevalidationTag.experience, RevalidationTag.partnership] }});
+  const homePageData = await client.fetch<HomePageQueryType>(homePageQuery, {}, { next: { tags: [RevalidationTag.project, RevalidationTag.about, RevalidationTag.experience, RevalidationTag.partnership] } });
   return (
     <main className="">
       {/* Hero Section */}
-      <section> 
+      <section>
         <Hero>
-          <ProjectCard project={homePageData.featuredProject}/>
+          <ProjectCard project={homePageData.featuredProject} />
         </Hero>
       </section>
       {/* About Section */}
@@ -41,7 +41,7 @@ export default async function Home() {
             <p className="text-h6">{homePageData.aboutSection.title}</p>
           </div>
           <div className="col-span-2 tablet:col-span-3 flex flex-col justify-center z-10 pt-10 tablet:pt-0 -mx-8 p-8 tablet:-mx-0 tablet:p-0 border-t-[2rem] tablet:border-t-0 border-gray-600">
-            <MarkdownRenderer content={homePageData.aboutSection.content}/>
+            <MarkdownRenderer content={homePageData.aboutSection.content} />
           </div>
         </div>
 
@@ -50,7 +50,7 @@ export default async function Home() {
       <section className="grid grid-flow-row grid-row-2 tablet:grid-flow-col tablet:grid-cols-2 gap-8 tablet:gap-12 px-8 tablet:px-0 tablet:pt-12">
         <div className={`col-span-1 bg-gray-300 grid grid-flow-col grid-cols-${homePageData.workHistorySection.length} p-12 gap-16`}>
           {
-            homePageData.workHistorySection.map(({ fullLogo, name }) => {
+            homePageData.workHistorySection.filter(h => h.fullLogo && h.name).map(({ fullLogo, name }) => {
               return (
                 <div key={fullLogo} className="col-span-1 relative min-h-[10rem]">
                   <Image
@@ -65,7 +65,7 @@ export default async function Home() {
                 </div>
               )
             })
-          } 
+          }
         </div>
         <div className={`col-span-1 bg-gray-300 grid grid-flow-col grid-cols-${homePageData.partnershipSection.length} p-12 gap-16`}>
           {
@@ -89,7 +89,7 @@ export default async function Home() {
       </section>
       {/* Featured Blog Section */}
       <section className="pt-8 px-8 tablet:px-0 tablet:pt-12">
-        <BlogCard key={homePageData.featuredBlog._id} blog={homePageData.featuredBlog}/>
+        <BlogCard key={homePageData.featuredBlog._id} blog={homePageData.featuredBlog} />
       </section>
     </main>
   );
