@@ -4,7 +4,7 @@ import { client } from "@/sanity/client";
 import { NotFoundPageQuery, notFoundPageQuery } from "@/sanity/queries/404";
 import { RevalidationTag } from "@/sanity/utils";
 import Link from 'next/link'
- 
+
 export default async function NotFound() {
   const fetchData = await client.fetch<NotFoundPageQuery>(notFoundPageQuery, {
   }, {
@@ -12,7 +12,7 @@ export default async function NotFound() {
       tags: [RevalidationTag.blog, RevalidationTag.project]
     }
   });
-  const {project, blog} = fetchData
+  const { project, blog } = fetchData
   return (
     <div className="p-8 tablet:p-0">
       <div className="bg-gray-100 w-full flex flex-col justify-center items-center p-16">
@@ -22,8 +22,8 @@ export default async function NotFound() {
         </div>
       </div>
       <div className="mt-8 flex flex-col gap-8">
-        <ProjectCard key={project._id} project={project}/>
-        <BlogCard key={blog._id} blog={blog}/>
+        <ProjectCard key={project._id} project={project} isHero={true} />
+        <BlogCard key={blog._id} blog={blog} />
       </div>
     </div>
   )

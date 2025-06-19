@@ -2,7 +2,6 @@
 
 import BlogCard from "@/components/BlogCard";
 import ClientButton from "@/components/Buttons/ClientButton";
-import ProjectCard from "@/components/ProjectCard";
 import { client } from "@/sanity/client";
 import { BlogSummary, BlogsQuery, blogsQuery } from "@/sanity/queries/blogs";
 import { ProjectsQuery, ProjectSummary, projectsQuery } from "@/sanity/queries/projects";
@@ -19,8 +18,8 @@ export default function Projects({ children, itemsPerPage }: { children?: React.
     // fetch the next page
     if (pagination.hasNext) {
       const fetchBlogs = await client.fetch<BlogsQuery>(blogsQuery, {
-        start: pagination.nextPage*itemsPerPage,
-        end: pagination.nextPage*itemsPerPage + itemsPerPage
+        start: pagination.nextPage * itemsPerPage,
+        end: pagination.nextPage * itemsPerPage + itemsPerPage
       }, {
         next: {
           tags: [RevalidationTag.blog]
@@ -57,7 +56,7 @@ export default function Projects({ children, itemsPerPage }: { children?: React.
           </ClientButton> :
           <p className="text-xl">No more results.</p>
         }
-      </div> 
+      </div>
 
     </div>
   )

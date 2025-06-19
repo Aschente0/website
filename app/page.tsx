@@ -14,7 +14,7 @@ export default async function Home() {
       {/* Hero Section */}
       <section>
         <Hero>
-          <ProjectCard project={homePageData.featuredProject} />
+          <ProjectCard project={homePageData.featuredProject} isHero={true} />
         </Hero>
       </section>
       {/* About Section */}

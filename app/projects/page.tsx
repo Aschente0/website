@@ -20,13 +20,13 @@ export default async function Projects() {
   return (
     <div className="">
       <Hero>
-        <ProjectCard project={fetchProjects.projects[0]} />
+        <ProjectCard project={fetchProjects.projects[0]} isHero={true} />
       </Hero>
       <div className={`pt-[65vh] tablet:pt-[85vh]`}>
         <div className="flex flex-col gap-8 tablet:gap-16 p-8 tablet:p-0">
           {fetchProjects.projects.slice(1).map(project => {
             return (
-              <ProjectCard key={project._id} project={project}/>
+              <ProjectCard key={project._id} project={project} />
             )
           })}
           <div className="w-full justify-center">

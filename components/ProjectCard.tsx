@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ProjectSummary } from "@/sanity/queries/projects";
 import ElevatedLogoWrapper from "./ElevatedLogoWrapper";
 
-export default function ProjectCard({ project }: { project: ProjectSummary }) {
+export default function ProjectCard({ project, isHero = false }: { project: ProjectSummary, isHero?: boolean }) {
   return (
     <div className="h-[100%] relative">
       <Image
@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: { project: ProjectSummary }) {
             color: project.textColour.hex,
           }}
         >
-          <h1 className="absolute top-8 left-8 text-h4 font-bold" style={{ color: project.textColour.hex }}>Latest Project:</h1>
+          {isHero && <h1 className="absolute top-8 left-8 text-h4 font-bold" style={{ color: project.textColour.hex }}>Latest Project:</h1>}
 
           <div className="h-[4rem] max-w-[15rem]">
             <ElevatedLogoWrapper>
